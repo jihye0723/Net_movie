@@ -1,4 +1,4 @@
-package com.example.netmovie.selenium;
+package com.example.netmovie.Selenium;
 
 import java.time.Duration;
 
