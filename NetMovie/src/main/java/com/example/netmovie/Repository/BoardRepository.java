@@ -6,4 +6,5 @@ import com.example.netmovie.Entity.Board;
 
 public interface BoardRepository extends JpaRepository<Board, Integer>{
 
+	Board findBoardByboardNo(int boardNo); 
 }

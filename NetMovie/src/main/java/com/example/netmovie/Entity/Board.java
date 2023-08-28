@@ -1,5 +1,7 @@
 package com.example.netmovie.Entity;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -18,7 +20,7 @@ public class Board extends BaseTimeEntity{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int board_no;
+	private int boardNo;
 	
 	@Column(columnDefinition = "VARCHAR(100)", nullable = false) 
 	private String title; 
@@ -29,10 +31,11 @@ public class Board extends BaseTimeEntity{
 	@Column(columnDefinition = "VARCHAR(16)", nullable = false)
 	private String writer;
 
-
+	@OneToMany(mappedBy="board", cascade= CascadeType.ALL, orphanRemoval = true) 
+	private Set<Reply> replyes;
+	
 	@Builder
-	public Board(int board_no, String title, String content, String writer) {
-		this.board_no=board_no;
+	public Board(String title, String content, String writer) {
 		this.title=title;
 		this.content=content;
 		this.writer=writer;
