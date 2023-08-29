@@ -1,6 +1,6 @@
 package com.example.netmovie.Entity;
 
-import java.util.Set;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -31,8 +31,8 @@ public class Board extends BaseTimeEntity{
 	@Column(columnDefinition = "VARCHAR(16)", nullable = false)
 	private String writer;
 
-	@OneToMany(mappedBy="board", cascade= CascadeType.ALL, orphanRemoval = true) 
-	private Set<Reply> replyes;
+	@OneToMany(mappedBy="board") 
+	private List<Reply> replyes = new ArrayList<>();
 	
 	@Builder
 	public Board(String title, String content, String writer) {
