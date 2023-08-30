@@ -1,5 +1,7 @@
 package com.example.netmovie.Service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.example.netmovie.Entity.Board;
@@ -25,6 +27,15 @@ public class BoardServiceImpl implements BoardService{
 		}catch(Exception e) {
 			return false; 
 		}
+	}
+
+
+	//게시글 전체 목록 
+	@Override
+	public List<Board> getBoardList() {
+		List<Board> list= boardRepository.findAll(); 
+		System.out.println(list.get(0).getTitle());
+		return list; 
 	}
 	
 }	

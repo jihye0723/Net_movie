@@ -4,6 +4,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,7 +33,8 @@ public class Board extends BaseTimeEntity{
 	@Column(columnDefinition = "VARCHAR(16)", nullable = false)
 	private String writer;
 
-	@OneToMany(mappedBy="board") 
+	@OneToMany(mappedBy="board")
+	@JsonIgnore
 	private List<Reply> replyes = new ArrayList<>();
 	
 	@Builder
