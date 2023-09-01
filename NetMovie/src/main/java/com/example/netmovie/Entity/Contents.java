@@ -1,14 +1,20 @@
 package com.example.netmovie.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -17,7 +23,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @Table(name ="contents")
-@DynamicInsert
 @NoArgsConstructor
 public class Contents {
 	
@@ -42,6 +47,11 @@ public class Contents {
 	
 	@Column
 	private float score; 
+	
+	@OneToMany(mappedBy="contents")
+	@JsonIgnore //참조하는거니까 table 에 넣을 데이터에 x 
+	private List<Review> reviews = new ArrayList<>(); 
+	
 	
 
 }
